@@ -69,7 +69,7 @@
         x.addOrderRule("Age");
         myChartAll.addMeasureAxis("y", "Fare");
         var z = myChartAll.addMeasureAxis("z", "Survived");
-        // z.overrideMin = 3;
+        z.overrideMin = 0.4;
         z.overrideMax = 10;
         var mySeries = myChartAll.addSeries(["Survived", "Pclass"], dimple.plot.bubble);
         mySeries.aggregate = dimple.aggregateMethod.avg;
