@@ -10,6 +10,14 @@ All of the graphs are generated using dimple.js, which is a javascript library o
 
 ## Feedback
 
+### Feedback 1: I don't understand the y axis for some of the plots.
+### Modification 1: Dimple.js use a aggregateMethod of sum by default, which in most of the cases here doesn't make sense. That caused some confusion at first. So I used instead avg method for aggregation. For example, in the "Sex vs Survivded" bar plot, the avg method essentailly gives a percentage of how many female or male passangers survived. This type of plot include: "Age vs Survived", "Sex vs Survived", "Pclass vs Survived", "SibSp vs Survived", "Parch vs Survived". Some other plots, using the same avg method, gives information about the average value for a certain category. These include: "Sex vs Age" with average age for each gender, "Sex vs Pclass" with average Pclass, "Embarked vs Pclass" with average Pclass.
+
+### Feedback 2: You have constructed plots with two variables, and more than 2 variables, how about plots with only one variable?
+### Modification 2: Some times plots with one variable also provide important statistical information, for example histogram plots. So I added some of the important one variable plots, such as the bar plots of Survived people, Pclasses, etc. 
+
+### Feedback 3: The first two plots can be combined into a single plot
+### Modification 3: The first plot, which is a plot with 4 variables (Age, Fare, Plcass, Survived), was initially given by two seperate plots: (Age, Fare, Pclass) and (Age, Fare, Survived). Then I found Dimple.js provide a size option for the z axis. So I decided to use legends to represent the Pclass variable, and different size of the circles to represent the Survived variable. 
 
 
 ## Resources

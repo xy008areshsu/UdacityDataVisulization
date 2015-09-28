@@ -1,0 +1,153 @@
+<html>
+<div id="chartContainer">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", 1200, 6000);
+      d3.csv("train.csv", function (data) {
+
+        // Plot 1: Multiple variable plots (Age, Fare, Survived, Pclass)
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(60, 30, 1000, 330)
+        var x = myChart.addCategoryAxis("x", "Age");
+        x.addOrderRule("Age");
+        myChart.addMeasureAxis("y", "Fare");       
+        var mySeries = myChart.addSeries(["Pclass"], dimple.plot.bubble);
+        var myLegend = myChart.addLegend(900, 100, 60, 300, "Right");
+        myChart.draw();
+
+
+        myChart.legends = [];
+
+        svg.selectAll("title_text")
+          .data(["Legend","Pclasses:"])
+          .enter()
+          .append("text")
+            .attr("x", 910)
+            .attr("y", function (d, i) { return 75 + i * 14; })
+            .style("font-family", "sans-serif")
+            .style("font-size", "10px")
+            .style("color", "Black")
+            .text(function (d) { return d; });
+
+
+
+
+        var myChart1 = new dimple.chart(svg, data);
+        myChart1.setBounds(60, 500, 1000, 330)
+
+        var x = myChart1.addCategoryAxis("x", "Age");
+        x.addOrderRule("Age");
+        myChart1.addMeasureAxis("y", "Fare");      
+        var mySeries1 = myChart1.addSeries(["Survived"], dimple.plot.bubble);
+        var myLegend1 = myChart1.addLegend(900, 570, 60, 300, "Right");
+        myChart1.draw();  
+
+        myChart1.legends = [];
+
+        svg.selectAll("title_text")
+          .data(["Legend","Survived:"])
+          .enter()
+          .append("text")
+            .attr("x", 910)
+            .attr("y", function (d, i) { return 550 + i * 14; })
+            .style("font-family", "sans-serif")
+            .style("font-size", "10px")
+            .style("color", "Black")
+            .text(function (d) { return d; });
+
+
+
+
+        var myChartAge = new dimple.chart(svg, data);
+        myChartAge.setBounds(60, 1000, 1000, 330)
+
+        var x = myChartAge.addCategoryAxis("x", "Age");
+        x.addOrderRule("Age");
+        myChartAge.addMeasureAxis("y", "Survived");
+        var mySeries = myChartAge.addSeries(null, dimple.plot.bar);
+        myChartAge.draw();
+
+
+
+        var myChartSex = new dimple.chart(svg, data);
+        myChartSex.setBounds(60, 1500, 450, 330)    
+
+        var x = myChartSex.addCategoryAxis("x", "Sex");
+        x.addOrderRule("Sex");
+        myChartSex.addMeasureAxis("y", "Survived");
+        var mySeries = myChartSex.addSeries(null, dimple.plot.bar);
+        myChartSex.draw();
+
+
+
+        var myChartClass = new dimple.chart(svg, data);
+        myChartClass.setBounds(600, 1500, 450, 330)        
+
+        var x = myChartClass.addCategoryAxis("x", "Pclass");
+        x.addOrderRule("Pclass");
+        myChartClass.addMeasureAxis("y", "Survived");
+        var mySeries = myChartClass.addSeries(null, dimple.plot.bar);
+        myChartClass.draw();
+
+
+
+        var myChartSexAge = new dimple.chart(svg, data);
+        myChartSexAge.setBounds(60, 2000, 450, 330);
+
+        var x = myChartSexAge.addCategoryAxis("x", "Sex");
+        x.addOrderRule("Sex");
+        myChartSexAge.addMeasureAxis("y", "Age");
+        var mySeries = myChartSexAge.addSeries(null, dimple.plot.bar);
+        myChartSexAge.draw();  
+
+
+
+        var myChartSexClass = new dimple.chart(svg, data);
+        myChartSexClass.setBounds(600, 2000, 450, 330);
+
+        var x = myChartSexClass.addCategoryAxis("x", "Sex");
+        x.addOrderRule("Sex");
+        myChartSexClass.addMeasureAxis("y", "Pclass");
+        var mySeries = myChartSexClass.addSeries(null, dimple.plot.bar);
+        myChartSexClass.draw();  
+
+
+
+        var myChartSibSurvived = new dimple.chart(svg, data);
+        myChartSibSurvived.setBounds(60, 2500, 450, 330);
+
+        var x = myChartSibSurvived.addCategoryAxis("x", "SibSp");
+        x.addOrderRule("SibSp");
+        myChartSibSurvived.addMeasureAxis("y", "Survived");
+        var mySeries = myChartSibSurvived.addSeries(null, dimple.plot.bar);
+        myChartSibSurvived.draw();  
+
+
+
+        var myChartParchSurvived = new dimple.chart(svg, data);
+        myChartParchSurvived.setBounds(600, 2500, 450, 330);
+
+        var x = myChartParchSurvived.addCategoryAxis("x", "Parch");
+        x.addOrderRule("Parch");
+        myChartParchSurvived.addMeasureAxis("y", "Survived");
+        var mySeries = myChartParchSurvived.addSeries(null, dimple.plot.bar);
+        myChartParchSurvived.draw();        
+
+
+
+        var myChartEmbarkClass = new dimple.chart(svg, data);
+        myChartEmbarkClass.setBounds(60, 3000, 1000, 330);
+
+        var x = myChartEmbarkClass.addCategoryAxis("x", "Embarked");
+        x.addOrderRule("Embarked");
+        myChartEmbarkClass.addMeasureAxis("y", "Pclass");
+        var mySeries = myChartEmbarkClass.addSeries(null, dimple.plot.bar);
+        myChartEmbarkClass.draw();
+
+
+      });
+
+  </script>
+</div>
+</html>
